@@ -1,0 +1,13 @@
+{
+    "Name": "FlashpointCCME",
+    "Author": "Flashpoint",
+    "Logo": "<img src=\"https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Logos/1password.svg\" width=\"75px\" height=\"75px\">",
+    "Description": "CCM-E Data from Flashpoint",
+    "Data Connectors": [
+        "Data Connectors/FlashpointCCME_CCP/connectorDefinition.json"
+    ],
+    "BasePath": "C:\\GitHub\\Azure-Sentinel\\Solutions\\FlashpointCCME",
+    "Version": "1.0.0",
+    "Metadata": "SolutionMetadata.json",
+    "TemplateSpec": true
+}

@@ -15,5 +15,10 @@
     "githubPullRequests.ignoredPullRequestBranches": [
         "master"
     ],
-    "azureFunctions.projectSubpath": "Solutions/BloodHound Enterprise/Data Connectors"
+    "azureFunctions.projectSubpath": "Solutions/BloodHound Enterprise/Data Connectors",
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#620200",
+        "titleBar.activeBackground": "#8A0301",
+        "titleBar.activeForeground": "#FFFBFB"
+    }
 }

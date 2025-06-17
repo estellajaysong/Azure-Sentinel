@@ -1,0 +1,38 @@
+[
+    {
+        "name": "CCME_CL",
+        "apiVersion": "2022-10-01",
+        "type": "Microsoft.OperationalInsights/workspaces/tables",
+        "properties": {
+            "schema": {
+                "name": "CCME_CL",
+                "columns": [
+                    {
+                        "name": "TimeGenerated",
+                        "type": "datetime"
+                    },
+                    {
+                        "name": "EventId",
+                        "type": "string"
+                    },
+                    {
+                        "name": "created_at",
+                        "type": "datetime"
+                    },
+                    {
+                        "name": "first_observed_at",
+                        "type": "datetime"
+                    },
+                    {
+                        "name": "domain",
+                        "type": "string"
+                    },
+                    {
+                        "name": "email",
+                        "type": "string"
+                    }
+                ]
+            }
+        }
+    }
+  ]

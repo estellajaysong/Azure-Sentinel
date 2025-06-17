@@ -1,0 +1,88 @@
+{
+    "type": "Microsoft.SecurityInsights/dataConnectorDefinitions",
+    "apiVersion": "2022-09-01-preview",
+    "name": "FlashpointCCME_CCP",
+    "location": "{{location}}",
+    "kind": "Customizable",
+    "properties": {
+        "connectorUiConfig": {
+            "id": "FlashpointCCME_CCP",
+            "title": "Flashpoint CCM-E",
+            "publisher": "Flashpoint",
+            "descriptionMarkdown": "CCM-E Data from Flashpoint",
+            "graphQueriesTableName": "CCME_CL",
+            "graphQueries": [
+                {
+                    "metricName": "Events",
+                    "legend": "Events",
+                    "baseQuery": "CCME_CL"
+                }
+            ],
+            "sampleQueries": [
+                {
+                    "description": "Get sample of CCME data",
+                    "query": "{{graphQueriesTableName}}\n | take 10"
+                }
+            ],
+            "dataTypes": [
+                {
+                    "name": "CCME_CL",
+                    "lastDataReceivedQuery": "CCME_CL\n | where TimeGenerated > ago(7d) | summarize Time = max(TimeGenerated)\n | where isnotempty(Time)"
+                }
+            ],
+            "connectivityCriteria": [
+                {
+                    "type": "HasDataConnectors"
+                }
+            ],
+            "availability": {
+                "isPreview": false
+            },
+            "permissions": {
+                "resourceProvider": [
+                    {
+                        "provider": "Microsoft.OperationalInsights/workspaces",
+                        "permissionsDisplayText": "Read and Write permissions are required.",
+                        "providerDisplayName": "Workspace",
+                        "scope": "Workspace",
+                        "requiredPermissions": {
+                            "write": true,
+                            "read": true,
+                            "delete": true
+                        }
+                    }
+                ],
+                "customs": [
+                    {
+                        "name": "Flashpoint API token",
+                        "description": "A Flaspoint API Token is required. See Docs."
+                    }
+                ]
+            },
+            "instructionSteps": [
+                {
+                    "title": "Enter Flashpoint Details",
+                    "description": "Enter Flashpoint Details",
+                    "instructions": [
+                        {
+                            "type": "Textbox",
+                            "parameters": {
+                                "label": "API Key",
+                                "placeholder": "Enter your API Token",
+                                "type": "password",
+                                "name": "ApiKey"
+                            }
+                        },
+                        {
+                            "type": "ConnectionToggleButton",
+                            "parameters": {
+                                "connectLabel": "connect",
+                                "name": "connect"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

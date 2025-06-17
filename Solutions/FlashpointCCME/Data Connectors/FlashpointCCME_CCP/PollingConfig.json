@@ -1,0 +1,48 @@
+[
+    {
+        "type": "Microsoft.SecurityInsights/dataConnectors",
+        "apiVersion": "2022-10-01-preview",
+        "name": "CCME",
+        "kind": "RestApiPoller",
+        "properties": {
+            "connectorDefinitionName": "FlashpointCCME_CCP",
+            "dataType": "CCME_CL",
+            "dcrConfig": {
+                "streamName": "Custom-CCMEStreamInput",
+                "dataCollectionEndpoint": "{{dataCollectionEndpoint}}",
+                "dataCollectionRuleImmutableId": "{{dataCollectionRuleImmutableId}}"
+            },
+            "auth": {
+                "type": "APIKey",
+                "ApiKey": "{{ApiKey}}",
+                "ApiKeyName": "Authorization",
+                "ApiKeyIdentifier": "Bearer"
+            },
+            "request": {
+                "apiEndpoint": "https://api.flashpoint.io/sources/v1/noncommunities/search?query=+basetypes:(credential-sighting)+header_.indexed_at:[now-1h TO now]+is_fresh:true",
+                "httpMethod": "Get",
+                "queryWindowInMin": 60,
+                "rateLimitQps": 5,
+                "retryCount": 3,
+                "timeoutInSeconds": 60,
+                "headers": {
+                    "Content-Type": "application/json",
+                    "x-fp-integrationplatform": "Microsoft Sentinel",
+                    "x-fp-integrationplatformversion": "cloud",
+                    "x-fp-integrationversion": "ato-1.0.0"
+                }
+            },
+            "response": {
+                "format": "json",
+                "eventsJsonPaths": [
+                    "$.hits.hits"
+                ]
+            },
+            "paging": {
+                  "pagingType": "Offset",
+                  "offsetParaName": "from",
+                  "pageSizeParameterName": "size"
+              }
+        }
+    }
+  ]

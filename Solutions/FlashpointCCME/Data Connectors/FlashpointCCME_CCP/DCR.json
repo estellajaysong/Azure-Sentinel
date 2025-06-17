@@ -1,0 +1,33 @@
+{
+    "name": "FlashpointCCME_DCR",
+    "apiVersion": "2022-06-01",
+    "type": "Microsoft.Insights/dataCollectionRules",
+    "location": "{{location}}",
+    "properties": {
+      "dataCollectionEndpointId": "{{dataCollectionEndpointId}}",
+      "streamDeclarations": {
+        "Custom-CCMEStreamInput": {
+          "columns": [
+            { "name": "created_at", "type": "datetime" },
+            { "name": "first_observed_at", "type": "datetime" },
+            { "name": "domain", "type": "string" },
+            { "name": "email", "type": "string" }
+          ]
+        }
+      },
+      "dataFlows": [
+        {
+          "streams": ["Custom-CCMEStreamInput"],
+          "destinations": ["logAnalytics"],
+          "transformKql": "source | project-rename TimeGenerated = timestamp, EventId = uuid",
+          "outputStream": "Custom-CCME_CL"
+        }
+      ],
+      "destinations": {
+        "logAnalytics": {
+          "workspaceResourceId": "{{workspaceResourceId}}"
+        }
+      }
+    }
+  }
+  
