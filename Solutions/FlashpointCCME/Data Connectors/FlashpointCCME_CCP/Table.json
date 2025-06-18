@@ -16,15 +16,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "FirstObservedAt",
-                        "type": "datetime"
-                    },
-                    {
                         "name": "Domain",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Email",
                         "type": "string"
                     }
                 ]
