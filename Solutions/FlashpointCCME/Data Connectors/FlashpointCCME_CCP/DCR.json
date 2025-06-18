@@ -8,25 +8,26 @@
       "streamDeclarations": {
         "Custom-CCMEStreamInput": {
           "columns": [
-            { "name": "created_at", "type": "datetime" },
-            { "name": "first_observed_at", "type": "datetime" },
-            { "name": "domain", "type": "string" },
-            { "name": "email", "type": "string" }
+            { "name": "_id", "type": "string" },
+            { "name": "_source", "type": "dynamic" }
           ]
         }
       },
       "dataFlows": [
         {
           "streams": ["Custom-CCMEStreamInput"],
-          "destinations": ["logAnalytics"],
-          "transformKql": "source | project-rename TimeGenerated = timestamp, EventId = uuid",
+          "destinations": ["FlashpointCCMEDestination"],
+          "transformKql": "source | extend TimeGenerated = todatetime(_source.breach.created_at.date-time), EventId = _id",
           "outputStream": "Custom-CCME_CL"
         }
       ],
       "destinations": {
-        "logAnalytics": {
-          "workspaceResourceId": "{{workspaceResourceId}}"
-        }
+        "logAnalytics": [
+          {
+            "workspaceResourceId": "{{workspaceResourceId}}",
+            "name": "FlashpointCCMEDestination"
+          }
+        ]
       }
     }
   }

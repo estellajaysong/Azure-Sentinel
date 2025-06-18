@@ -16,19 +16,15 @@
                         "type": "string"
                     },
                     {
-                        "name": "created_at",
+                        "name": "FirstObservedAt",
                         "type": "datetime"
                     },
                     {
-                        "name": "first_observed_at",
-                        "type": "datetime"
-                    },
-                    {
-                        "name": "domain",
+                        "name": "Domain",
                         "type": "string"
                     },
                     {
-                        "name": "email",
+                        "name": "Email",
                         "type": "string"
                     }
                 ]
