@@ -67,6 +67,16 @@
                         {
                             "type": "Textbox",
                             "parameters": {
+                              "label": "Optional Password Length Filter",
+                              "placeholder": "e.g. +password_complexity.length:10, +password_complexity.length:>=10, +password_complexity.length:<10, or leave blank for no filtering.",
+                              "type": "text",
+                              "name": "PasswordLengthClause",
+                              "defaultValue": ""
+                            }
+                        },
+                        {
+                            "type": "Textbox",
+                            "parameters": {
                                 "label": "API Key",
                                 "placeholder": "Enter your API Token",
                                 "type": "password",

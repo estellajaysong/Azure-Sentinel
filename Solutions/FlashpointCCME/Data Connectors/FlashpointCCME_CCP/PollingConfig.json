@@ -19,7 +19,7 @@
                 "ApiKeyIdentifier": "Bearer"
             },
             "request": {
-                "apiEndpoint": "https://api.flashpoint.io/sources/v1/noncommunities/search?query=+basetypes:(credential-sighting)+header_.indexed_at:[now-1h TO now]+is_fresh:true",
+                "apiEndpoint": "https://api.flashpoint.io/sources/v1/noncommunities/search?query=+basetypes:(credential-sighting)+header_.indexed_at:[now-1h TO now]+is_fresh:true{{PasswordLengthClause}}",
                 "httpMethod": "Get",
                 "queryWindowInMin": 60,
                 "rateLimitQps": 5,
