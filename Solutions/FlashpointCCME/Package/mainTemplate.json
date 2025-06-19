@@ -89,12 +89,12 @@
                   "title": "Flashpoint CCM-E",
                   "publisher": "Flashpoint",
                   "descriptionMarkdown": "CCM-E Data from Flashpoint",
-                  "graphQueriesTableName": "CCME2_CL",
+                  "graphQueriesTableName": "CCME3_CL",
                   "graphQueries": [
                     {
                       "metricName": "Events",
                       "legend": "Events",
-                      "baseQuery": "CCME2_CL"
+                      "baseQuery": "CCME3_CL"
                     }
                   ],
                   "sampleQueries": [
@@ -105,8 +105,8 @@
                   ],
                   "dataTypes": [
                     {
-                      "name": "CCME2_CL",
-                      "lastDataReceivedQuery": "CCME2_CL\n | where TimeGenerated > ago(7d) | summarize Time = max(TimeGenerated)\n | where isnotempty(Time)"
+                      "name": "CCME3_CL",
+                      "lastDataReceivedQuery": "CCME3_CL\n | where TimeGenerated > ago(7d) | summarize Time = max(TimeGenerated)\n | where isnotempty(Time)"
                     }
                   ],
                   "connectivityCriteria": [
@@ -229,8 +229,8 @@
                     "destinations": [
                       "FlashpointCCMEDestination"
                     ],
-                    "transformKql": "source | project-rename EventId = _id, Source = _source | extend TimeGenerated = now(), Domain = tostring(Source.domain)",
-                    "outputStream": "Custom-CCME2_CL"
+                    "transformKql": "source | project-rename EventId = _id, Source = _source | extend TimeGenerated = now(), Domain = tostring(Source.domain), Email = tostring(Source.email), BreachCreatedAt = todatetime(Source.breach.created_at[\"date-time\"]), BreachFirstObservedAt = todatetime(Source.breach.first_observed_at[\"date-time\"])",
+                    "outputStream": "Custom-CCME3_CL"
                   }
                 ],
                 "destinations": {
@@ -244,14 +244,14 @@
               }
             },
             {
-              "name": "CCME2_CL",
+              "name": "CCME3_CL",
               "apiVersion": "2022-10-01",
               "type": "Microsoft.OperationalInsights/workspaces/tables",
               "location": "[parameters('workspace-location')]",
               "kind": null,
               "properties": {
                 "schema": {
-                  "name": "CCME2_CL",
+                  "name": "CCME3_CL",
                   "columns": [
                     {
                       "name": "TimeGenerated",
@@ -264,6 +264,18 @@
                     {
                       "name": "Domain",
                       "type": "string"
+                    },
+                    {
+                      "name": "Email",
+                      "type": "string"
+                    },
+                    {
+                      "name": "BreachCreatedAt",
+                      "type": "datetime"
+                    },
+                    {
+                      "name": "BreachFirstObservedAt",
+                      "type": "datetime"
                     }
                   ]
                 }
@@ -292,12 +304,12 @@
           "title": "Flashpoint CCM-E",
           "publisher": "Flashpoint",
           "descriptionMarkdown": "CCM-E Data from Flashpoint",
-          "graphQueriesTableName": "CCME2_CL",
+          "graphQueriesTableName": "CCME3_CL",
           "graphQueries": [
             {
               "metricName": "Events",
               "legend": "Events",
-              "baseQuery": "CCME2_CL"
+              "baseQuery": "CCME3_CL"
             }
           ],
           "sampleQueries": [
@@ -308,8 +320,8 @@
           ],
           "dataTypes": [
             {
-              "name": "CCME2_CL",
-              "lastDataReceivedQuery": "CCME2_CL\n | where TimeGenerated > ago(7d) | summarize Time = max(TimeGenerated)\n | where isnotempty(Time)"
+              "name": "CCME3_CL",
+              "lastDataReceivedQuery": "CCME3_CL\n | where TimeGenerated > ago(7d) | summarize Time = max(TimeGenerated)\n | where isnotempty(Time)"
             }
           ],
           "connectivityCriteria": [
@@ -485,7 +497,7 @@
               "kind": "RestApiPoller",
               "properties": {
                 "connectorDefinitionName": "FlashpointCCME_CCP",
-                "dataType": "CCME2_CL",
+                "dataType": "CCME3_CL",
                 "dcrConfig": {
                   "streamName": "Custom-CCMEStreamInput",
                   "dataCollectionEndpoint": "[[parameters('dcrConfig').dataCollectionEndpoint]",

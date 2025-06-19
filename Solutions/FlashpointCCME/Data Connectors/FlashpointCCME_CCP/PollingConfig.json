@@ -6,7 +6,7 @@
         "kind": "RestApiPoller",
         "properties": {
             "connectorDefinitionName": "FlashpointCCME_CCP",
-            "dataType": "CCME2_CL",
+            "dataType": "CCME3_CL",
             "dcrConfig": {
                 "streamName": "Custom-CCMEStreamInput",
                 "dataCollectionEndpoint": "{{dataCollectionEndpoint}}",
