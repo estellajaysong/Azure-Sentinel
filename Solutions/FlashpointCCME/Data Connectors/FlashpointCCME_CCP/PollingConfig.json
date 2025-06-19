@@ -4,6 +4,7 @@
         "apiVersion": "2022-10-01-preview",
         "name": "CCME",
         "kind": "RestApiPoller",
+        "debugMode": true,
         "properties": {
             "connectorDefinitionName": "FlashpointCCME_CCP",
             "dataType": "CCME3_CL",
