@@ -89,12 +89,12 @@
                   "title": "Flashpoint CCM-E",
                   "publisher": "Flashpoint",
                   "descriptionMarkdown": "CCM-E Data from Flashpoint",
-                  "graphQueriesTableName": "CCME_CL",
+                  "graphQueriesTableName": "CCME2_CL",
                   "graphQueries": [
                     {
                       "metricName": "Events",
                       "legend": "Events",
-                      "baseQuery": "CCME_CL"
+                      "baseQuery": "CCME2_CL"
                     }
                   ],
                   "sampleQueries": [
@@ -105,8 +105,8 @@
                   ],
                   "dataTypes": [
                     {
-                      "name": "CCME_CL",
-                      "lastDataReceivedQuery": "CCME_CL\n | where TimeGenerated > ago(7d) | summarize Time = max(TimeGenerated)\n | where isnotempty(Time)"
+                      "name": "CCME2_CL",
+                      "lastDataReceivedQuery": "CCME2_CL\n | where TimeGenerated > ago(7d) | summarize Time = max(TimeGenerated)\n | where isnotempty(Time)"
                     }
                   ],
                   "connectivityCriteria": [
@@ -230,7 +230,7 @@
                       "FlashpointCCMEDestination"
                     ],
                     "transformKql": "source | project-rename EventId = _id, Source = _source | extend TimeGenerated = now(), Domain = tostring(Source.domain)",
-                    "outputStream": "Custom-CCME_CL"
+                    "outputStream": "Custom-CCME2_CL"
                   }
                 ],
                 "destinations": {
@@ -244,14 +244,14 @@
               }
             },
             {
-              "name": "CCME_CL",
+              "name": "CCME2_CL",
               "apiVersion": "2022-10-01",
               "type": "Microsoft.OperationalInsights/workspaces/tables",
               "location": "[parameters('workspace-location')]",
               "kind": null,
               "properties": {
                 "schema": {
-                  "name": "CCME_CL",
+                  "name": "CCME2_CL",
                   "columns": [
                     {
                       "name": "TimeGenerated",
@@ -292,12 +292,12 @@
           "title": "Flashpoint CCM-E",
           "publisher": "Flashpoint",
           "descriptionMarkdown": "CCM-E Data from Flashpoint",
-          "graphQueriesTableName": "CCME_CL",
+          "graphQueriesTableName": "CCME2_CL",
           "graphQueries": [
             {
               "metricName": "Events",
               "legend": "Events",
-              "baseQuery": "CCME_CL"
+              "baseQuery": "CCME2_CL"
             }
           ],
           "sampleQueries": [
@@ -308,8 +308,8 @@
           ],
           "dataTypes": [
             {
-              "name": "CCME_CL",
-              "lastDataReceivedQuery": "CCME_CL\n | where TimeGenerated > ago(7d) | summarize Time = max(TimeGenerated)\n | where isnotempty(Time)"
+              "name": "CCME2_CL",
+              "lastDataReceivedQuery": "CCME2_CL\n | where TimeGenerated > ago(7d) | summarize Time = max(TimeGenerated)\n | where isnotempty(Time)"
             }
           ],
           "connectivityCriteria": [
@@ -485,7 +485,7 @@
               "kind": "RestApiPoller",
               "properties": {
                 "connectorDefinitionName": "FlashpointCCME_CCP",
-                "dataType": "CCME_CL",
+                "dataType": "CCME2_CL",
                 "dcrConfig": {
                   "streamName": "Custom-CCMEStreamInput",
                   "dataCollectionEndpoint": "[[parameters('dcrConfig').dataCollectionEndpoint]",
