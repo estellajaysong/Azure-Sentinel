@@ -18,6 +18,18 @@
                     {
                         "name": "Domain",
                         "type": "string"
+                    },
+                    {
+                        "name": "Email",
+                        "type": "string"
+                    },
+                    {
+                        "name": "BreachCreatedAt",
+                        "type": "datetime"
+                    },
+                    {
+                        "name": "BreachFirstObservedAt",
+                        "type": "datetime"
                     }
                 ]
             }

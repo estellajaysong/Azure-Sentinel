@@ -17,7 +17,7 @@
         {
           "streams": ["Custom-CCMEStreamInput"],
           "destinations": ["FlashpointCCMEDestination"],
-          "transformKql": "source | project-rename EventId = _id, Source = _source | extend TimeGenerated = now(), Domain = tostring(Source.domain)",
+          "transformKql": "source | project-rename EventId = _id, Source = _source | extend TimeGenerated = now(), Domain = tostring(Source.domain), Email = tostring(Source.email), BreachCreatedAt = todatetime(Source.breach.created_at.date-time), BreachFirstObservedAt = todatetime(Source.breach.first_observed_at.date-time)",
           "outputStream": "Custom-CCME2_CL"
         }
       ],
