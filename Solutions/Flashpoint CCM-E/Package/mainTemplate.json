@@ -737,7 +737,7 @@
                   "ApiKeyIdentifier": "Bearer"
                 },
                 "request": {
-                  "apiEndpoint": "[[concat('https://api.flashpoint.io/sources/v1/noncommunities/search?query=+basetypes:(credential-sighting)+header_.indexed_at:[now-1h TO now]+is_fresh:true+password_complexity.length:',parameters('PasswordLength'),'+password_complexity.has_lowercase:',parameters('PasswordHasLowercase'))]",
+                  "apiEndpoint": "[[concat('https://api.flashpoint.io/sources/v1/noncommunities/search?query=+basetypes:(credential-sighting)+header_.indexed_at:[now-1h TO now]+is_fresh:true+password_complexity.length:',parameters('PasswordLength'),'+password_complexity.has_lowercase:',parameters('PasswordHasLowercase'),'+password_complexity.has_uppercase:',parameters('PasswordHasUppercase'),'+password_complexity.has_number:',parameters('PasswordHasNumber'),'+password_complexity.has_symbol:',parameters('PasswordHasSymbol'))]",
                   "httpMethod": "Get",
                   "queryWindowInMin": 60,
                   "rateLimitQps": 5,
