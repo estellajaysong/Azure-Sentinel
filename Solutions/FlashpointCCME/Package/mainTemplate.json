@@ -153,109 +153,46 @@
                           }
                         },
                         {
+                          "parameters": {
+                            "text": "This is a test",
+                            "visible": true,
+                            "inline": true
+                          },
+                          "type": "InfoMessage"
+                        },
+                        {
                           "type": "Textbox",
                           "parameters": {
-                            "label": "Password Complexity Length",
+                            "label": "Password Length",
                             "placeholder": "Enter length (e.g., 8, >10, >=12, <16) or * for all lengths",
                             "type": "text",
-                            "name": "PasswordComplexityLength"
+                            "name": "PasswordLength"
                           }
                         },
                         {
-                          "type": "Dropdown",
+                          "parameters": {
+                            "text": "This is a test 2",
+                            "visible": true,
+                            "inline": true
+                          },
+                          "type": "InfoMessage"
+                        },
+                        {
+                          "type": "Textbox",
                           "parameters": {
                             "label": "Password Has Lowercase",
+                            "placeholder": "true, false, or * (for all passwords)",
                             "type": "text",
-                            "name": "PasswordHasLowercase",
-                            "required": true,
-                            "placeholder": "Select a filter",
-                            "options": [
-                              {
-                                "key": "*",
-                                "text": "All passwords regardless of case"
-                              },
-                              {
-                                "key": "true",
-                                "text": "Only passwords containing at least one lowercase letter"
-                              },
-                              {
-                                "key": "false",
-                                "text": "Only passwords containing no lowercase letters"
-                              }
-                            ]
+                            "name": "PasswordHasLowercase"
                           }
                         },
                         {
-                          "type": "Dropdown",
                           "parameters": {
-                            "label": "Password Has Uppercase",
-                            "type": "text",
-                            "name": "PasswordHasUppercase",
-                            "required": true,
-                            "placeholder": "Select a filter",
-                            "options": [
-                              {
-                                "key": "*",
-                                "text": "All passwords regardless of case"
-                              },
-                              {
-                                "key": "true",
-                                "text": "Only passwords containing at least one uppercase letter"
-                              },
-                              {
-                                "key": "false",
-                                "text": "Only passwords containing no uppercase letters"
-                              }
-                            ]
-                          }
-                        },
-                        {
-                          "type": "Dropdown",
-                          "parameters": {
-                            "label": "Password Has Number",
-                            "type": "text",
-                            "name": "PasswordHasNumber",
-                            "required": true,
-                            "placeholder": "Select a filter",
-                            "options": [
-                              {
-                                "key": "*",
-                                "text": "All passwords regardless of containing numbers"
-                              },
-                              {
-                                "key": "true",
-                                "text": "Only passwords containing at least one number"
-                              },
-                              {
-                                "key": "false",
-                                "text": "Only passwords containing no numbers"
-                              }
-                            ]
-                          }
-                        },
-                        {
-                          "type": "Dropdown",
-                          "parameters": {
-                            "label": "Password Has Symbol",
-                            "type": "text",
-                            "name": "PasswordHasSymbol",
-                            "required": true,
-                            "placeholder": "Select a data type",
-                            "options": [
-                              {
-                                "key": "*",
-                                "text": "All passwords regardless of containing symbols"
-                              },
-                              {
-                                "key": "true",
-                                "text": "Only passwords containing at least one symbol"
-                              },
-                              {
-                                "key": "false",
-                                "text": "Only passwords containing no symbols"
-                              }
-                            ]
-                          }
+                            "text": "This is a test 3",
+                            "visible": true,
+                            "inline": true
+                          },
+                          "type": "InfoMessage"
                         },
                         {
                           "type": "ConnectionToggleButton",
@@ -473,109 +410,46 @@
                   }
                 },
                 {
+                  "parameters": {
+                    "text": "This is a test",
+                    "visible": true,
+                    "inline": true
+                  },
+                  "type": "InfoMessage"
+                },
+                {
                   "type": "Textbox",
                   "parameters": {
-                    "label": "Password Complexity Length",
+                    "label": "Password Length",
                     "placeholder": "Enter length (e.g., 8, >10, >=12, <16) or * for all lengths",
                     "type": "text",
-                    "name": "PasswordComplexityLength"
+                    "name": "PasswordLength"
                   }
                 },
                 {
-                  "type": "Dropdown",
+                  "parameters": {
+                    "text": "This is a test 2",
+                    "visible": true,
+                    "inline": true
+                  },
+                  "type": "InfoMessage"
+                },
+                {
+                  "type": "Textbox",
                   "parameters": {
                     "label": "Password Has Lowercase",
+                    "placeholder": "true, false, or * (for all passwords)",
                     "type": "text",
-                    "name": "PasswordHasLowercase",
-                    "required": true,
-                    "placeholder": "Select a filter",
-                    "options": [
-                      {
-                        "key": "*",
-                        "text": "All passwords regardless of case"
-                      },
-                      {
-                        "key": "true",
-                        "text": "Only passwords containing at least one lowercase letter"
-                      },
-                      {
-                        "key": "false",
-                        "text": "Only passwords containing no lowercase letters"
-                      }
-                    ]
+                    "name": "PasswordHasLowercase"
                   }
                 },
                 {
-                  "type": "Dropdown",
                   "parameters": {
-                    "label": "Password Has Uppercase",
-                    "type": "text",
-                    "name": "PasswordHasUppercase",
-                    "required": true,
-                    "placeholder": "Select a filter",
-                    "options": [
-                      {
-                        "key": "*",
-                        "text": "All passwords regardless of case"
-                      },
-                      {
-                        "key": "true",
-                        "text": "Only passwords containing at least one uppercase letter"
-                      },
-                      {
-                        "key": "false",
-                        "text": "Only passwords containing no uppercase letters"
-                      }
-                    ]
-                  }
-                },
-                {
-                  "type": "Dropdown",
-                  "parameters": {
-                    "label": "Password Has Number",
-                    "type": "text",
-                    "name": "PasswordHasNumber",
-                    "required": true,
-                    "placeholder": "Select a filter",
-                    "options": [
-                      {
-                        "key": "*",
-                        "text": "All passwords regardless of containing numbers"
-                      },
-                      {
-                        "key": "true",
-                        "text": "Only passwords containing at least one number"
-                      },
-                      {
-                        "key": "false",
-                        "text": "Only passwords containing no numbers"
-                      }
-                    ]
-                  }
-                },
-                {
-                  "type": "Dropdown",
-                  "parameters": {
-                    "label": "Password Has Symbol",
-                    "type": "text",
-                    "name": "PasswordHasSymbol",
-                    "required": true,
-                    "placeholder": "Select a data type",
-                    "options": [
-                      {
-                        "key": "*",
-                        "text": "All passwords regardless of containing symbols"
-                      },
-                      {
-                        "key": "true",
-                        "text": "Only passwords containing at least one symbol"
-                      },
-                      {
-                        "key": "false",
-                        "text": "Only passwords containing no symbols"
-                      }
-                    ]
-                  }
+                    "text": "This is a test 3",
+                    "visible": true,
+                    "inline": true
+                  },
+                  "type": "InfoMessage"
                 },
                 {
                   "type": "ConnectionToggleButton",
@@ -669,29 +543,14 @@
               "type": "securestring",
               "minLength": 1
             },
-            "PasswordComplexityLength": {
-              "defaultValue": "PasswordComplexityLength",
+            "PasswordLength": {
+              "defaultValue": "PasswordLength",
               "type": "securestring",
               "minLength": 1
             },
             "PasswordHasLowercase": {
               "defaultValue": "PasswordHasLowercase",
-              "type": "array",
-              "minLength": 1
-            },
-            "PasswordHasUppercase": {
-              "defaultValue": "PasswordHasUppercase",
-              "type": "array",
-              "minLength": 1
-            },
-            "PasswordHasNumber": {
-              "defaultValue": "PasswordHasNumber",
-              "type": "array",
-              "minLength": 1
-            },
-            "PasswordHasSymbol": {
-              "defaultValue": "PasswordHasSymbol",
-              "type": "array",
+              "type": "securestring",
               "minLength": 1
             }
           },
@@ -745,7 +604,7 @@
                   "ApiKeyIdentifier": "Bearer"
                 },
                 "request": {
-                  "apiEndpoint": "[[concat('https://api.flashpoint.io/sources/v1/noncommunities/search?query=+basetypes:(credential-sighting)+header_.indexed_at:[now-1h TO now]+is_fresh:true+password_complexity.length:',parameters('PasswordComplexityLength'),'+password_complexity.has_lowercase:',parameters('PasswordHasLowercase'),'+password_complexity.has_uppercase:',parameters('PasswordHasUppercase'),'+password_complexity.has_number:',parameters('PasswordHasNumber'),'+password_complexity.has_symbol:',parameters('PasswordHasSymbol'))]",
+                  "apiEndpoint": "[[concat('https://api.flashpoint.io/sources/v1/noncommunities/search?query=+basetypes:(credential-sighting)+header_.indexed_at:[now-1h TO now]+is_fresh:true+password_complexity.length:',parameters('PasswordLength'),'+password_complexity.has_lowercase:',parameters('PasswordHasLowercase'))]",
                   "httpMethod": "Get",
                   "queryWindowInMin": 60,
                   "rateLimitQps": 5,
