@@ -7,7 +7,7 @@
         "debugMode": true,
         "properties": {
             "connectorDefinitionName": "FlashpointCCME_CCP",
-            "dataType": "CCME3_CL",
+            "dataType": "CCME4_CL",
             "dcrConfig": {
                 "streamName": "Custom-CCMEStreamInput",
                 "dataCollectionEndpoint": "{{dataCollectionEndpoint}}",
@@ -20,7 +20,7 @@
                 "ApiKeyIdentifier": "Bearer"
             },
             "request": {
-                "apiEndpoint": "https://api.flashpoint.io/sources/v1/noncommunities/search?query=+basetypes:(credential-sighting)+header_.indexed_at:[now-1h TO now]+is_fresh:true{{PasswordLengthClause}}",
+                "apiEndpoint": "https://api.flashpoint.io/sources/v1/noncommunities/search?query=+basetypes:(credential-sighting)+header_.indexed_at:[now-1h TO now]+is_fresh:true+password_complexity.length:{{PasswordComplexityLength}}+password_complexity.has_lowercase:{{PasswordHasLowercase}}+password_complexity.has_uppercase:{{PasswordHasUppercase}}+password_complexity.has_number:{{PasswordHasNumber}}+password_complexity.has_symbol:{{PasswordHasSymbol}}",
                 "httpMethod": "Get",
                 "queryWindowInMin": 60,
                 "rateLimitQps": 5,

@@ -1,11 +1,11 @@
 [
     {
-        "name": "CCME3_CL",
+        "name": "CCME4_CL",
         "apiVersion": "2022-10-01",
         "type": "Microsoft.OperationalInsights/workspaces/tables",
         "properties": {
             "schema": {
-                "name": "CCME3_CL",
+                "name": "CCME4_CL",
                 "columns": [
                     {
                         "name": "TimeGenerated",
