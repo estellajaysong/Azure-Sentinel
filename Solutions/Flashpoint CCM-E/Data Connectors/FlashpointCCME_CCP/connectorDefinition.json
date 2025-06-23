@@ -10,12 +10,12 @@
             "title": "Flashpoint CCM-E",
             "publisher": "Flashpoint",
             "descriptionMarkdown": "CCM-E Data from Flashpoint",
-            "graphQueriesTableName": "CCME4_CL",
+            "graphQueriesTableName": "CCME5_CL",
             "graphQueries": [
                 {
                     "metricName": "Events",
                     "legend": "Events",
-                    "baseQuery": "CCME4_CL"
+                    "baseQuery": "CCME5_CL"
                 }
             ],
             "sampleQueries": [
@@ -26,8 +26,8 @@
             ],
             "dataTypes": [
                 {
-                    "name": "CCME4_CL",
-                    "lastDataReceivedQuery": "CCME4_CL\n | where TimeGenerated > ago(7d) | summarize Time = max(TimeGenerated)\n | where isnotempty(Time)"
+                    "name": "CCME5_CL",
+                    "lastDataReceivedQuery": "CCME5_CL\n | where TimeGenerated > ago(7d) | summarize Time = max(TimeGenerated)\n | where isnotempty(Time)"
                 }
             ],
             "connectivityCriteria": [

@@ -89,12 +89,12 @@
                   "title": "Flashpoint CCM-E",
                   "publisher": "Flashpoint",
                   "descriptionMarkdown": "CCM-E Data from Flashpoint",
-                  "graphQueriesTableName": "CCME4_CL",
+                  "graphQueriesTableName": "CCME5_CL",
                   "graphQueries": [
                     {
                       "metricName": "Events",
                       "legend": "Events",
-                      "baseQuery": "CCME4_CL"
+                      "baseQuery": "CCME5_CL"
                     }
                   ],
                   "sampleQueries": [
@@ -105,8 +105,8 @@
                   ],
                   "dataTypes": [
                     {
-                      "name": "CCME4_CL",
-                      "lastDataReceivedQuery": "CCME4_CL\n | where TimeGenerated > ago(7d) | summarize Time = max(TimeGenerated)\n | where isnotempty(Time)"
+                      "name": "CCME5_CL",
+                      "lastDataReceivedQuery": "CCME5_CL\n | where TimeGenerated > ago(7d) | summarize Time = max(TimeGenerated)\n | where isnotempty(Time)"
                     }
                   ],
                   "connectivityCriteria": [
@@ -323,7 +323,7 @@
                       "FlashpointCCMEDestination"
                     ],
                     "transformKql": "source | project-rename EventId = _id, Source = _source | extend TimeGenerated = now(), Domain = tostring(Source.domain), Email = tostring(Source.email), TimesSeen = toint(Source.times_seen), BreachCreatedAt = todatetime(Source.breach.created_at[\"date-time\"]), BreachFirstObservedAt = todatetime(Source.breach.first_observed_at[\"date-time\"]), BreachSource = tostring(Source.breach.source), BreachTitle = tostring(Source.breach.title), BreachVictim = tostring(Source.breach.victim)",
-                    "outputStream": "Custom-CCME4_CL"
+                    "outputStream": "Custom-CCME5_CL"
                   }
                 ],
                 "destinations": {
@@ -337,14 +337,14 @@
               }
             },
             {
-              "name": "CCME4_CL",
+              "name": "CCME5_CL",
               "apiVersion": "2022-10-01",
               "type": "Microsoft.OperationalInsights/workspaces/tables",
               "location": "[parameters('workspace-location')]",
               "kind": null,
               "properties": {
                 "schema": {
-                  "name": "CCME4_CL",
+                  "name": "CCME5_CL",
                   "columns": [
                     {
                       "name": "TimeGenerated",
@@ -413,12 +413,12 @@
           "title": "Flashpoint CCM-E",
           "publisher": "Flashpoint",
           "descriptionMarkdown": "CCM-E Data from Flashpoint",
-          "graphQueriesTableName": "CCME4_CL",
+          "graphQueriesTableName": "CCME5_CL",
           "graphQueries": [
             {
               "metricName": "Events",
               "legend": "Events",
-              "baseQuery": "CCME4_CL"
+              "baseQuery": "CCME5_CL"
             }
           ],
           "sampleQueries": [
@@ -429,8 +429,8 @@
           ],
           "dataTypes": [
             {
-              "name": "CCME4_CL",
-              "lastDataReceivedQuery": "CCME4_CL\n | where TimeGenerated > ago(7d) | summarize Time = max(TimeGenerated)\n | where isnotempty(Time)"
+              "name": "CCME5_CL",
+              "lastDataReceivedQuery": "CCME5_CL\n | where TimeGenerated > ago(7d) | summarize Time = max(TimeGenerated)\n | where isnotempty(Time)"
             }
           ],
           "connectivityCriteria": [
@@ -724,7 +724,7 @@
               "kind": "RestApiPoller",
               "properties": {
                 "connectorDefinitionName": "FlashpointCCME_CCP",
-                "dataType": "CCME4_CL",
+                "dataType": "CCME5_CL",
                 "dcrConfig": {
                   "streamName": "Custom-CCMEStreamInput",
                   "dataCollectionEndpoint": "[[parameters('dcrConfig').dataCollectionEndpoint]",
