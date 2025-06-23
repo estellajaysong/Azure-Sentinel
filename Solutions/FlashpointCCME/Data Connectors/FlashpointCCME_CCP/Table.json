@@ -24,12 +24,28 @@
                         "type": "string"
                     },
                     {
+                        "name": "TimesSeen",
+                        "type": "int"
+                    },
+                    {
                         "name": "BreachCreatedAt",
                         "type": "datetime"
                     },
                     {
                         "name": "BreachFirstObservedAt",
                         "type": "datetime"
+                    },
+                    {
+                        "name": "BreachSource",
+                        "type": "string"
+                    },
+                    {
+                        "name": "BreachTitle",
+                        "type": "string"
+                    },
+                    {
+                        "name": "BreachVictim",
+                        "type": "string"
                     }
                 ]
             }
