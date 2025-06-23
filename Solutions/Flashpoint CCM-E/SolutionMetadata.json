@@ -1,0 +1,19 @@
+{
+    "publisherId": "placeholder",
+    "offerId": "azure-sentinel-solution-flashpoint-ccm-e",
+    "firstPublishDate": "placeholder",
+    "providers": [
+        "Flashpoint"
+    ],
+    "categories": {
+        "domains": [
+            "Security - Threat Intelligence"
+        ]
+    },
+    "support": {
+        "name": "Flashpoint",
+        "email": "support@flashpoint.io",
+        "tier": "Partner",
+        "link": "https://flashpoint.io/contact-us/"
+    }
+}

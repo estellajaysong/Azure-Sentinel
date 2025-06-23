@@ -15,7 +15,7 @@
             },
             "auth": {
                 "type": "APIKey",
-                "ApiKey": "{{ApiKey}}",
+                "ApiKey": "{{ApiToken}}",
                 "ApiKeyName": "Authorization",
                 "ApiKeyIdentifier": "Bearer"
             },

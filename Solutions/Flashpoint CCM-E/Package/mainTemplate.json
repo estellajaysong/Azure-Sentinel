@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "metadata": {
     "author": "Flashpoint",
-    "comments": "Solution template for FlashpointCCME"
+    "comments": "Solution template for Flashpoint CCM-E"
   },
   "parameters": {
     "location": {
@@ -44,9 +44,9 @@
     }
   },
   "variables": {
-    "_solutionName": "FlashpointCCME",
+    "_solutionName": "Flashpoint CCM-E",
     "_solutionVersion": "3.0.0",
-    "solutionId": "test.test",
+    "solutionId": "placeholder.azure-sentinel-solution-flashpoint-ccm-e",
     "_solutionId": "[variables('solutionId')]",
     "workspaceResourceId": "[resourceId('microsoft.OperationalInsights/Workspaces', parameters('workspace'))]",
     "dataConnectorCCPVersion": "1.0.0",
@@ -144,17 +144,25 @@
                       "description": "Enter details for the Flashpoint CCM-E data connector",
                       "instructions": [
                         {
+                          "parameters": {
+                            "text": "Get an API Token from Flashpoint Ignite",
+                            "visible": true,
+                            "inline": true
+                          },
+                          "type": "InfoMessage"
+                        },
+                        {
                           "type": "Textbox",
                           "parameters": {
-                            "label": "API Key",
+                            "label": "API Token",
                             "placeholder": "Enter your API Token",
                             "type": "password",
-                            "name": "ApiKey"
+                            "name": "ApiToken"
                           }
                         },
                         {
                           "parameters": {
-                            "text": "This is a test",
+                            "text": "Filter the results by password length, \ntestnewline",
                             "visible": true,
                             "inline": true
                           },
@@ -164,14 +172,31 @@
                           "type": "Textbox",
                           "parameters": {
                             "label": "Password Length",
-                            "placeholder": "Enter length (e.g., 8, >10, >=12, <16) or * for all lengths",
+                            "placeholder": "*",
                             "type": "text",
                             "name": "PasswordLength"
                           }
                         },
                         {
                           "parameters": {
-                            "text": "This is a test 2",
+                            "text": "Filter the results by whether the password contains a lowercase letter, e.g. true will contain only results with at least one lowercase letter, and false will contain results without any lowercase letters",
+                            "visible": true,
+                            "inline": true
+                          },
+                          "type": "InfoMessage"
+                        },
+                        {
+                          "type": "Textbox",
+                          "parameters": {
+                            "label": "Password Has Number",
+                            "placeholder": "*",
+                            "type": "text",
+                            "name": "PasswordHasNumber"
+                          }
+                        },
+                        {
+                          "parameters": {
+                            "text": "Filter the results by whether the password contains a number, e.g. true will contain only results with at least one number, and false will contain results without any numbers",
                             "visible": true,
                             "inline": true
                           },
@@ -188,11 +213,37 @@
                         },
                         {
                           "parameters": {
-                            "text": "This is a test 3",
+                            "text": "Filter the results by whether the password contains a uppercase letter, e.g. true will contain only results with at least one uppercase letter, and false will contain results without any uppercase letters",
                             "visible": true,
                             "inline": true
                           },
                           "type": "InfoMessage"
+                        },
+                        {
+                          "type": "Textbox",
+                          "parameters": {
+                            "label": "Password Has Uppercase",
+                            "placeholder": "true, false, or * (for all passwords)",
+                            "type": "text",
+                            "name": "PasswordHasUppercase"
+                          }
+                        },
+                        {
+                          "parameters": {
+                            "text": "",
+                            "visible": true,
+                            "inline": true
+                          },
+                          "type": "InfoMessage"
+                        },
+                        {
+                          "type": "Textbox",
+                          "parameters": {
+                            "label": "Password Has Symbol",
+                            "placeholder": "true, false, or * (for all passwords)",
+                            "type": "text",
+                            "name": "PasswordHasSymbol"
+                          }
                         },
                         {
                           "type": "ConnectionToggleButton",
@@ -225,10 +276,10 @@
                   "name": "Flashpoint"
                 },
                 "support": {
-                  "name": "Christian",
-                  "email": "test@example.com",
+                  "name": "Flashpoint",
+                  "email": "support@flashpoint.io",
                   "tier": "Partner",
-                  "link": "https://www.example.com"
+                  "link": "https://flashpoint.io/contact-us/"
                 },
                 "dependencies": {
                   "criteria": [
@@ -271,7 +322,7 @@
                     "destinations": [
                       "FlashpointCCMEDestination"
                     ],
-                    "transformKql": "source | project-rename EventId = _id, Source = _source | extend TimeGenerated = now(), Domain = tostring(Source.domain), Email = tostring(Source.email), BreachCreatedAt = todatetime(Source.breach.created_at[\"date-time\"]), BreachFirstObservedAt = todatetime(Source.breach.first_observed_at[\"date-time\"])",
+                    "transformKql": "source | project-rename EventId = _id, Source = _source | extend TimeGenerated = now(), Domain = tostring(Source.domain), Email = tostring(Source.email), TimesSeen = toint(Source.times_seen), BreachCreatedAt = todatetime(Source.breach.created_at[\"date-time\"]), BreachFirstObservedAt = todatetime(Source.breach.first_observed_at[\"date-time\"]), BreachSource = tostring(Source.breach.source), BreachTitle = tostring(Source.breach.title), BreachVictim = tostring(Source.breach.victim)",
                     "outputStream": "Custom-CCME4_CL"
                   }
                 ],
@@ -312,12 +363,28 @@
                       "type": "string"
                     },
                     {
+                      "name": "TimesSeen",
+                      "type": "int"
+                    },
+                    {
                       "name": "BreachCreatedAt",
                       "type": "datetime"
                     },
                     {
                       "name": "BreachFirstObservedAt",
                       "type": "datetime"
+                    },
+                    {
+                      "name": "BreachSource",
+                      "type": "string"
+                    },
+                    {
+                      "name": "BreachTitle",
+                      "type": "string"
+                    },
+                    {
+                      "name": "BreachVictim",
+                      "type": "string"
                     }
                   ]
                 }
@@ -401,17 +468,25 @@
               "description": "Enter details for the Flashpoint CCM-E data connector",
               "instructions": [
                 {
+                  "parameters": {
+                    "text": "Get an API Token from Flashpoint Ignite",
+                    "visible": true,
+                    "inline": true
+                  },
+                  "type": "InfoMessage"
+                },
+                {
                   "type": "Textbox",
                   "parameters": {
-                    "label": "API Key",
+                    "label": "API Token",
                     "placeholder": "Enter your API Token",
                     "type": "password",
-                    "name": "ApiKey"
+                    "name": "ApiToken"
                   }
                 },
                 {
                   "parameters": {
-                    "text": "This is a test",
+                    "text": "Filter the results by password length, \ntestnewline",
                     "visible": true,
                     "inline": true
                   },
@@ -421,14 +496,31 @@
                   "type": "Textbox",
                   "parameters": {
                     "label": "Password Length",
-                    "placeholder": "Enter length (e.g., 8, >10, >=12, <16) or * for all lengths",
+                    "placeholder": "*",
                     "type": "text",
                     "name": "PasswordLength"
                   }
                 },
                 {
                   "parameters": {
-                    "text": "This is a test 2",
+                    "text": "Filter the results by whether the password contains a lowercase letter, e.g. true will contain only results with at least one lowercase letter, and false will contain results without any lowercase letters",
+                    "visible": true,
+                    "inline": true
+                  },
+                  "type": "InfoMessage"
+                },
+                {
+                  "type": "Textbox",
+                  "parameters": {
+                    "label": "Password Has Number",
+                    "placeholder": "*",
+                    "type": "text",
+                    "name": "PasswordHasNumber"
+                  }
+                },
+                {
+                  "parameters": {
+                    "text": "Filter the results by whether the password contains a number, e.g. true will contain only results with at least one number, and false will contain results without any numbers",
                     "visible": true,
                     "inline": true
                   },
@@ -445,11 +537,37 @@
                 },
                 {
                   "parameters": {
-                    "text": "This is a test 3",
+                    "text": "Filter the results by whether the password contains a uppercase letter, e.g. true will contain only results with at least one uppercase letter, and false will contain results without any uppercase letters",
                     "visible": true,
                     "inline": true
                   },
                   "type": "InfoMessage"
+                },
+                {
+                  "type": "Textbox",
+                  "parameters": {
+                    "label": "Password Has Uppercase",
+                    "placeholder": "true, false, or * (for all passwords)",
+                    "type": "text",
+                    "name": "PasswordHasUppercase"
+                  }
+                },
+                {
+                  "parameters": {
+                    "text": "",
+                    "visible": true,
+                    "inline": true
+                  },
+                  "type": "InfoMessage"
+                },
+                {
+                  "type": "Textbox",
+                  "parameters": {
+                    "label": "Password Has Symbol",
+                    "placeholder": "true, false, or * (for all passwords)",
+                    "type": "text",
+                    "name": "PasswordHasSymbol"
+                  }
                 },
                 {
                   "type": "ConnectionToggleButton",
@@ -482,10 +600,10 @@
           "name": "Flashpoint"
         },
         "support": {
-          "name": "Christian",
-          "email": "test@example.com",
+          "name": "Flashpoint",
+          "email": "support@flashpoint.io",
           "tier": "Partner",
-          "link": "https://www.example.com"
+          "link": "https://flashpoint.io/contact-us/"
         },
         "dependencies": {
           "criteria": [
@@ -538,8 +656,8 @@
               },
               "type": "object"
             },
-            "ApiKey": {
-              "defaultValue": "ApiKey",
+            "ApiToken": {
+              "defaultValue": "ApiToken",
               "type": "securestring",
               "minLength": 1
             },
@@ -548,8 +666,23 @@
               "type": "securestring",
               "minLength": 1
             },
+            "PasswordHasNumber": {
+              "defaultValue": "PasswordHasNumber",
+              "type": "securestring",
+              "minLength": 1
+            },
             "PasswordHasLowercase": {
               "defaultValue": "PasswordHasLowercase",
+              "type": "securestring",
+              "minLength": 1
+            },
+            "PasswordHasUppercase": {
+              "defaultValue": "PasswordHasUppercase",
+              "type": "securestring",
+              "minLength": 1
+            },
+            "PasswordHasSymbol": {
+              "defaultValue": "PasswordHasSymbol",
               "type": "securestring",
               "minLength": 1
             }
@@ -576,10 +709,10 @@
                   "name": "Flashpoint"
                 },
                 "support": {
-                  "name": "Christian",
-                  "email": "test@example.com",
+                  "name": "Flashpoint",
+                  "email": "support@flashpoint.io",
                   "tier": "Partner",
-                  "link": "https://www.example.com"
+                  "link": "https://flashpoint.io/contact-us/"
                 }
               }
             },
@@ -599,7 +732,7 @@
                 },
                 "auth": {
                   "type": "APIKey",
-                  "ApiKey": "[[parameters('ApiKey')]",
+                  "ApiKey": "[[parameters('ApiToken')]",
                   "ApiKeyName": "Authorization",
                   "ApiKeyIdentifier": "Bearer"
                 },
@@ -649,28 +782,28 @@
         "version": "3.0.0",
         "kind": "Solution",
         "contentSchemaVersion": "3.0.0",
-        "displayName": "FlashpointCCME",
-        "publisherDisplayName": "Christian",
-        "descriptionHtml": "<p><strong>Note:</strong> Please refer to the following before installing the solution:</p>\n<p>• Review the solution <a href=\"https://github.com/Azure/Azure-Sentinel/tree/master/Solutions/FlashpointCCME/ReleaseNotes.md\">Release Notes</a></p>\n<p>• There may be <a href=\"https://aka.ms/sentinelsolutionsknownissues\">known issues</a> pertaining to this Solution, please refer to them before installing.</p>\n<p>CCM-E Data from Flashpoint</p>\n<p><strong>Data Connectors:</strong> 1</p>\n<p><a href=\"https://aka.ms/azuresentinel\">Learn more about Microsoft Sentinel</a> | <a href=\"https://aka.ms/azuresentinelsolutionsdoc\">Learn more about Solutions</a></p>\n",
+        "displayName": "Flashpoint CCM-E",
+        "publisherDisplayName": "Flashpoint",
+        "descriptionHtml": "<p><strong>Note:</strong> Please refer to the following before installing the solution:</p>\n<p>• Review the solution <a href=\"https://github.com/Azure/Azure-Sentinel/tree/master/Solutions/Flashpoint%20CCM-E/ReleaseNotes.md\">Release Notes</a></p>\n<p>• There may be <a href=\"https://aka.ms/sentinelsolutionsknownissues\">known issues</a> pertaining to this Solution, please refer to them before installing.</p>\n<p>CCM-E Data from Flashpoint</p>\n<p><strong>Data Connectors:</strong> 1</p>\n<p><a href=\"https://aka.ms/azuresentinel\">Learn more about Microsoft Sentinel</a> | <a href=\"https://aka.ms/azuresentinelsolutionsdoc\">Learn more about Solutions</a></p>\n",
         "contentKind": "Solution",
         "contentProductId": "[variables('_solutioncontentProductId')]",
         "id": "[variables('_solutioncontentProductId')]",
-        "icon": "<img src=\"https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Logos/1password.svg\" width=\"75px\" height=\"75px\">",
+        "icon": "<img src=\"https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Logos/Flashpoint.svg\" width=\"75px\" height=\"75px\">",
         "contentId": "[variables('_solutionId')]",
         "parentId": "[variables('_solutionId')]",
         "source": {
           "kind": "Solution",
-          "name": "FlashpointCCME",
+          "name": "Flashpoint CCM-E",
           "sourceId": "[variables('_solutionId')]"
         },
         "author": {
           "name": "Flashpoint"
         },
         "support": {
-          "name": "Christian",
-          "email": "test@example.com",
+          "name": "Flashpoint",
+          "email": "support@flashpoint.io",
           "tier": "Partner",
-          "link": "https://www.example.com"
+          "link": "https://flashpoint.io/contact-us/"
         },
         "dependencies": {
           "operator": "AND",
@@ -682,13 +815,13 @@
             }
           ]
         },
-        "firstPublishDate": "2025-06-17",
+        "firstPublishDate": "placeholder",
         "providers": [
-          "test"
+          "Flashpoint"
         ],
         "categories": {
           "domains": [
-            "Security - Network"
+            "Security - Threat Intelligence"
           ]
         }
       },
