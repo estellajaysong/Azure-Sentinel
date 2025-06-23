@@ -1,7 +1,7 @@
 {
     "Name": "FlashpointCCME",
     "Author": "Flashpoint",
-    "Logo": "<img src=\"https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Logos/1password.svg\" width=\"75px\" height=\"75px\">",
+    "Logo": "<img src=\"https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Logos/Flashpoint.svg\" width=\"75px\" height=\"75px\">",
     "Description": "CCM-E Data from Flashpoint",
     "Data Connectors": [
         "Data Connectors/FlashpointCCME_CCP/connectorDefinition.json"
