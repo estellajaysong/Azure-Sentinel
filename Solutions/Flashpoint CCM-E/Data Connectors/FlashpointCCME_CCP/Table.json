@@ -24,6 +24,14 @@
                         "type": "string"
                     },
                     {
+                        "name": "AffectedDomain",
+                        "type": "string"
+                    },
+                    {
+                        "name": "AffectedUrl",
+                        "type": "string"
+                    },
+                    {
                         "name": "TimesSeen",
                         "type": "int"
                     },
