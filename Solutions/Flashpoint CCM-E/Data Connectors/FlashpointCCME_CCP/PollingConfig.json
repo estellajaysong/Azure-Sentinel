@@ -7,7 +7,7 @@
         "debugMode": true,
         "properties": {
             "connectorDefinitionName": "FlashpointCCME_CCP",
-            "dataType": "CCME5_CL",
+            "dataType": "CCME_CL",
             "dcrConfig": {
                 "streamName": "Custom-CCMEStreamInput",
                 "dataCollectionEndpoint": "{{dataCollectionEndpoint}}",
