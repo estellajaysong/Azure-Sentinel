@@ -1,6 +1,6 @@
 {
     "publisherId": "flashpoint",
-    "offerId": "azure-sentinel-solution-flashpoint",
+    "offerId": "azure-sentinel-solution-flashpoint-ccm-e",
     "firstPublishDate": "2025-06-23",
     "providers": [
         "Flashpoint"

@@ -46,7 +46,7 @@
   "variables": {
     "_solutionName": "Flashpoint CCM-E",
     "_solutionVersion": "3.0.0",
-    "solutionId": "flashpoint.azure-sentinel-solution-flashpoint",
+    "solutionId": "flashpoint.azure-sentinel-solution-flashpoint-ccm-e",
     "_solutionId": "[variables('solutionId')]",
     "workspaceResourceId": "[resourceId('microsoft.OperationalInsights/Workspaces', parameters('workspace'))]",
     "dataConnectorCCPVersion": "1.0.0",
@@ -134,7 +134,7 @@
                     "customs": [
                       {
                         "name": "Flashpoint API token",
-                        "description": "A Flaspoint API Token is required. See Docs."
+                        "description": "A Flashpoint API Token is required. See Docs."
                       }
                     ]
                   },
@@ -466,7 +466,7 @@
             "customs": [
               {
                 "name": "Flashpoint API token",
-                "description": "A Flaspoint API Token is required. See Docs."
+                "description": "A Flashpoint API Token is required. See Docs."
               }
             ]
           },

@@ -55,7 +55,7 @@
                 "customs": [
                     {
                         "name": "Flashpoint API token",
-                        "description": "A Flaspoint API Token is required. See Docs."
+                        "description": "A Flashpoint API Token is required. See Docs."
                     }
                 ]
             },
