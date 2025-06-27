@@ -100,7 +100,7 @@
                         },
                         {
                             "parameters": {
-                                "text": "Filter the results by whether the password contains a lowercase letter, e.g. \"true\" will only ingest passwords with at least one lowercase letter, and \"false\" will only ingest those without any lowercase letters",
+                                "text": "Use \"true\" to exclude passwords containing no lowercase letters, or use \"false\" to exclude passwords containing at least one lowercase letter",
                                 "visible": true,
                                 "inline": true
                             },
@@ -117,7 +117,7 @@
                         },
                         {
                             "parameters": {
-                                "text": "Filter the results by whether the password contains an uppercase letter, e.g. \"true\" will only ingest passwords with at least one uppercase letter, and \"false\" will only ingest those without any uppercase letters",
+                                "text": "Use \"true\" to exclude passwords containing no uppercase letters, or use \"false\" to exclude passwords containing at least one uppercase letter",
                                 "visible": true,
                                 "inline": true
                             },
@@ -134,7 +134,7 @@
                         },
                         {
                             "parameters": {
-                                "text": "Filter the results by whether the password contains a number, e.g. \"true\" will only ingest passwords with at least one number, and \"false\" will only ingest those without any numbers",
+                                "text": "Use \"true\" to exclude passwords containing no numbers, or use \"false\" to exclude passwords containing at least one number",
                                 "visible": true,
                                 "inline": true
                             },
@@ -151,7 +151,7 @@
                         },
                         {
                             "parameters": {
-                                "text": "Filter the results by whether the password contains a symbol, e.g. \"true\" will only ingest passwords with at least one symbol, and \"false\" will only ingest those without any symbols",
+                                "text": "Use \"true\" to exclude passwords containing no synbols, or use \"false\" to exclude passwords containing at least one symbol",
                                 "visible": true,
                                 "inline": true
                             },
