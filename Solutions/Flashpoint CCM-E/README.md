@@ -30,4 +30,4 @@ Owner on the Microsoft Sentinel Resource Group
 4. Click `Flashpoint CCM-E` > `Open connector page`
 5. Fill in your Flashpoint API token and filters for the credential sightings you want to ingest
 6. Click `connect`
-7. You should see the events populate once data begins ingesting. Note: It may take up to 30 minutes to see data begin ingesting. Credentials will continue to sync every hour onwards.
+7. You should see the events populate once data begins ingesting. Note: It may take up to 30 minutes to see data begin ingesting. Credentials will continue to sync every hour onwards
