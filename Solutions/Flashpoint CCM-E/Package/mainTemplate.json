@@ -46,7 +46,7 @@
   "variables": {
     "_solutionName": "Flashpoint CCM-E",
     "_solutionVersion": "3.0.0",
-    "solutionId": "placeholder.azure-sentinel-solution-flashpoint-ccm-e",
+    "solutionId": "flashpoint.azure-sentinel-solution-flashpoint",
     "_solutionId": "[variables('solutionId')]",
     "workspaceResourceId": "[resourceId('microsoft.OperationalInsights/Workspaces', parameters('workspace'))]",
     "dataConnectorCCPVersion": "1.0.0",
@@ -829,7 +829,9 @@
         ],
         "categories": {
           "domains": [
-            "Security - Threat Intelligence"
+            "Security - Threat Intelligence",
+            "Identity",
+            "Security – Information Protection"
           ]
         }
       },

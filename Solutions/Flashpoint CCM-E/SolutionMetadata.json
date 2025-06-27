@@ -1,13 +1,15 @@
 {
-    "publisherId": "placeholder",
-    "offerId": "azure-sentinel-solution-flashpoint-ccm-e",
+    "publisherId": "flashpoint",
+    "offerId": "azure-sentinel-solution-flashpoint",
     "firstPublishDate": "2025-06-23",
     "providers": [
         "Flashpoint"
     ],
     "categories": {
         "domains": [
-            "Security - Threat Intelligence"
+            "Security - Threat Intelligence",
+            "Identity",
+            "Security – Information Protection"
         ]
     },
     "support": {
